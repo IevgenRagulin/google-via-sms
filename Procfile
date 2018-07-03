@@ -1,1 +1,1 @@
-web: gunicorn google-via-sms.wsgi
+web: gunicorn app:app --log-file=-
