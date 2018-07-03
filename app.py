@@ -12,8 +12,6 @@ client = Client(os.environ['TWILIO_SID'], os.environ['TWILIO_AUTH_TOKEN'])
 
 @app.route('/')
 def homepage():
-    print(os.environ['TWILIO_SID'])
-    print(os.environ['TWILIO_AUTH_TOKEN'])
     return "hii"
 
 
