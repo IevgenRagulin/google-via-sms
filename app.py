@@ -1,3 +1,4 @@
+import os
 from flask import Flask, request, jsonify
 app = Flask(__name__)
 
@@ -6,9 +7,7 @@ from twilio.rest import TwilioRestClient
 from twilio.twiml.messaging_response import MessagingResponse
 from twilio import twiml
 from twilio.rest import Client
-account_sid = 'twilio_sid_goes_here'
-auth_token = 'twilio_token_goes_here'
-client = Client(account_sid, auth_token)
+client = Client(os.environ['TWILIO_SID'], os.environ['TWILIO_AUTH_TOKEN'])
 
 
 @app.route('/')
