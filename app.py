@@ -1,6 +1,7 @@
 import os
 from flask import Flask, request, jsonify
 app = Flask(__name__)
+import requests
 
 from datetime import datetime
 from twilio.rest import TwilioRestClient
@@ -20,7 +21,8 @@ def sms_reply():
     print(request.form['Body'])
     body = request.form['Body']
     resp = MessagingResponse()
-    resp.message(body)
+    google_response = requests.get('https://www.googleapis.com/customsearch/v1?key='+os.environ['GOOGLE_API_KEY']+'&cx='+os.environ['CUSTOM_SEARCH_CONSOLE']+'&key='+body).content
+    resp.message(google_response['items'][0]['snippet'])
     return str(resp)
 
 
