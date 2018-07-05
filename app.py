@@ -25,12 +25,6 @@ def sms_reply():
     google_response = requests.get('https://www.googleapis.com/customsearch/v1?key='+os.environ['GOOGLE_API_KEY']+'&cx='+os.environ['CUSTOM_SEARCH_CONSOLE']+'&q='+body).content
     google_response = json.loads(google_response)
     print(google_response)
-    items = google_response['items']
-    print(items)
-    item_1 = items[0]
-    print(item_1)
-    snippet = item_1['snippet']
-    print(snippet)
     resp.message(google_response['items'][0]['snippet'])
     return str(resp)
 
